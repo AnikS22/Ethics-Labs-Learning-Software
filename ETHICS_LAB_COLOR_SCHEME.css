@@ -1,0 +1,213 @@
+/**
+ * Ethics Labs Color Scheme & Typography
+ * Based on "The Ethics Labs" branding theme (ethicslabs.ai)
+ *
+ * Color Palette:
+ * - Cyan Blue (Primary): #0099ff
+ * - Orange/Golden Yellow (Secondary): #FF8C00 / #FFD700
+ * - Red (Accent): #FF4444
+ * - Black (Text/Outlines): #000000
+ * - White (Background): #FFFFFF
+ * - Light Grey (Subtle accents): #F8F9FA
+ *
+ * Typography:
+ * - Display: Jacquard 24 (serif, decorative) - for "The Ethics Lab" title
+ * - Body: IBM Plex Sans (sans-serif) - for all body text
+ * - Monospace: IBM Plex Mono - for code/technical content
+ */
+
+:root {
+	/* Typography */
+	--font-display: 'Jacquard 24', serif;
+	--font-body: 'IBM Plex Sans', sans-serif;
+	--font-mono: 'IBM Plex Mono', monospace;
+
+	/* Primary Colors - Ethics Labs Theme */
+	--ethics-lab-blue: #0099ff;
+	--ethics-lab-blue-light: #33adff;
+	--ethics-lab-blue-dark: #0077cc;
+	--ethics-lab-blue-alpha: rgba(0, 153, 255, 0.1);
+	
+	/* Secondary Colors */
+	--ethics-lab-orange: #FF8C00;
+	--ethics-lab-orange-light: #FFB84D;
+	--ethics-lab-orange-dark: #CC7000;
+	--ethics-lab-gold: #FFD700;
+	
+	/* Accent Colors */
+	--ethics-lab-red: #FF4444;
+	--ethics-lab-red-light: #FF7777;
+	--ethics-lab-red-dark: #CC3636;
+	
+	/* Neutral Colors */
+	--ethics-lab-black: #000000;
+	--ethics-lab-white: #FFFFFF;
+	--ethics-lab-grey-light: #F8F9FA;
+	--ethics-lab-grey: #E2E6E9;
+	
+	/* Override primary color variables if needed */
+	--primary-color: var(--ethics-lab-blue);
+	--primary: var(--ethics-lab-blue);
+	--primary-hover: var(--ethics-lab-blue-dark);
+	--primary-light: var(--ethics-lab-blue-light);
+}
+
+/* Button Styles with Ethics Lab Colors */
+.btn-primary {
+	background-color: var(--ethics-lab-blue);
+	border-color: var(--ethics-lab-blue);
+	color: var(--ethics-lab-white);
+}
+
+.btn-primary:hover {
+	background-color: var(--ethics-lab-blue-dark);
+	border-color: var(--ethics-lab-blue-dark);
+}
+
+.btn-secondary {
+	background-color: var(--ethics-lab-orange);
+	border-color: var(--ethics-lab-orange);
+	color: var(--ethics-lab-white);
+}
+
+.btn-secondary:hover {
+	background-color: var(--ethics-lab-orange-dark);
+	border-color: var(--ethics-lab-orange-dark);
+}
+
+.btn-accent {
+	background-color: var(--ethics-lab-red);
+	border-color: var(--ethics-lab-red);
+	color: var(--ethics-lab-white);
+}
+
+.btn-accent:hover {
+	background-color: var(--ethics-lab-red-dark);
+	border-color: var(--ethics-lab-red-dark);
+}
+
+/* Link Colors */
+a {
+	color: var(--ethics-lab-blue);
+}
+
+a:hover {
+	color: var(--ethics-lab-blue-dark);
+}
+
+/* Active/Selected States */
+.nav-link.active {
+	border-bottom-color: var(--ethics-lab-blue);
+	color: var(--ethics-lab-blue);
+}
+
+/* Progress Bars */
+.progress-bar {
+	background-color: var(--ethics-lab-blue);
+}
+
+/* Course Cards - Accent Colors */
+.course-card-pills {
+	border-color: var(--ethics-lab-blue);
+}
+
+.course-card-pills.orange {
+	background-color: var(--ethics-lab-orange);
+	color: var(--ethics-lab-white);
+	border-color: var(--ethics-lab-orange);
+}
+
+.course-card-pills.red {
+	background-color: var(--ethics-lab-red);
+	color: var(--ethics-lab-white);
+	border-color: var(--ethics-lab-red);
+}
+
+/* Certificate Styling */
+.certificate-border {
+	border-color: var(--ethics-lab-blue);
+	background: linear-gradient(135deg, var(--ethics-lab-white) 0%, var(--ethics-lab-grey-light) 100%);
+	box-shadow: 0 4px 20px var(--ethics-lab-blue-alpha);
+}
+
+.certificate-name {
+	color: var(--ethics-lab-black);
+}
+
+.certificate-footer-item {
+	color: var(--ethics-lab-black);
+}
+
+.cursive-font {
+	color: var(--ethics-lab-orange);
+}
+
+.certificate-expiry {
+	color: var(--ethics-lab-red);
+}
+
+/* Badge/Indicator Colors */
+.badge-primary {
+	background-color: var(--ethics-lab-blue);
+	color: var(--ethics-lab-white);
+}
+
+.badge-secondary {
+	background-color: var(--ethics-lab-orange);
+	color: var(--ethics-lab-white);
+}
+
+.badge-accent {
+	background-color: var(--ethics-lab-red);
+	color: var(--ethics-lab-white);
+}
+
+/* Gradient Backgrounds */
+.gradient-blue {
+	background: linear-gradient(135deg, var(--ethics-lab-blue) 0%, var(--ethics-lab-blue-light) 100%);
+}
+
+.gradient-orange {
+	background: linear-gradient(135deg, var(--ethics-lab-orange) 0%, var(--ethics-lab-gold) 100%);
+}
+
+.gradient-multicolor {
+	background: linear-gradient(135deg, var(--ethics-lab-blue) 0%, var(--ethics-lab-orange) 50%, var(--ethics-lab-red) 100%);
+}
+
+/* Utility Classes */
+.text-ethics-blue {
+	color: var(--ethics-lab-blue);
+}
+
+.text-ethics-orange {
+	color: var(--ethics-lab-orange);
+}
+
+.text-ethics-red {
+	color: var(--ethics-lab-red);
+}
+
+.bg-ethics-blue {
+	background-color: var(--ethics-lab-blue);
+}
+
+.bg-ethics-orange {
+	background-color: var(--ethics-lab-orange);
+}
+
+.bg-ethics-red {
+	background-color: var(--ethics-lab-red);
+}
+
+.border-ethics-blue {
+	border-color: var(--ethics-lab-blue);
+}
+
+.border-ethics-orange {
+	border-color: var(--ethics-lab-orange);
+}
+
+.border-ethics-red {
+	border-color: var(--ethics-lab-red);
+}

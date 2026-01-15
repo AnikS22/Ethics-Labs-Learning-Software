@@ -9,7 +9,7 @@ from lms import __version__ as version
 setup(
 	name="lms",
 	version=version,
-	description="Learning Management System",
+	description="Ethics Labs - Learning Management System",
 	author="Jannat",
 	author_email="jannat@frappe.io",
 	packages=find_packages(),

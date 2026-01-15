@@ -12,6 +12,11 @@ export default {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				display: ['Jacquard 24', 'serif'],
+				sans: ['IBM Plex Sans', 'sans-serif'],
+				mono: ['IBM Plex Mono', 'monospace'],
+			},
 			strokeWidth: {
 				1.5: '1.5',
 			},

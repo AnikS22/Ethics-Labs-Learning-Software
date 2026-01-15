@@ -1,9 +1,9 @@
 from . import __version__ as app_version
 
 app_name = "frappe_lms"
-app_title = "Frappe LMS"
-app_publisher = "Frappe"
-app_description = "Frappe LMS App"
+app_title = "Ethics Labs"
+app_publisher = "Ethics Labs"
+app_description = "Ethics Labs Learning Platform"
 app_icon_url = "/assets/lms/images/lms-logo.png"
 app_icon_title = "Learning"
 app_icon_route = "/lms"

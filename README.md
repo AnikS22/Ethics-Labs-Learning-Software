@@ -1,9 +1,9 @@
 <div align="center" markdown="1">
 
-<img src=".github/lms-logo.png" alt="Frappe Learning logo" width="80" height="80"/>
-<h1>Frappe Learning</h1>
+<img src=".github/lms-logo.png" alt="Ethics Labs logo" width="80" height="80"/>
+<h1>Ethics Labs</h1>
 
-**Easy to use, open source, Learning Management System**
+**Ethics Labs Learning Management System**
 
 ![Tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/vandxn/main&style=flat&logo=cypress)
 
@@ -20,8 +20,8 @@
 	<a href="https://docs.frappe.io/learning">Documentation</a>
 </div>
 
-## Frappe Learning
-Frappe Learning is an easy-to-use learning system that helps you bring structure to your content.
+## Ethics Labs
+Ethics Labs is a learning management system designed to help you bring structure to your educational content and deliver ethics-focused courses.
 
 ### Motivation
 In 2021, we were looking for a Learning Management System to launch [Mon.School](https://mon.school) for FOSS United. We checked out Moodle, but it didn’t feel right. The forms were unnecessarily lengthy and the UI was confusing. It shouldn't be this hard to create a course right? So I started making a learning system for Mon.School which soon became a product in itself. The aim is to have a simple platform that anyone can use to launch a course of their own and make knowledge sharing easier.

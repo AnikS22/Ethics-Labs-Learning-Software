@@ -29,12 +29,12 @@
 						<div class="text-base font-medium text-ink-gray-9 leading-none">
 							<span
 								v-if="
-									branding.data?.app_name && branding.data?.app_name != 'Frappe'
+									branding.data?.app_name && branding.data?.app_name != 'Ethics Labs'
 								"
 							>
 								{{ branding.data?.app_name }}
 							</span>
-							<span v-else> Learning </span>
+							<span v-else> Ethics Labs </span>
 						</div>
 						<div
 							v-if="userResource.data"
@@ -184,12 +184,12 @@ const userDropdownOptions = computed(() => {
 				},
 				{
 					icon: FrappeCloudIcon,
-					label: 'Login to Frappe Cloud',
+					label: 'Login to Ethics Labs Cloud',
 					onClick: () => {
 						$dialog({
-							title: __('Login to Frappe Cloud?'),
+							title: __('Login to Ethics Labs Cloud?'),
 							message: __(
-								'Are you sure you want to login to your Frappe Cloud dashboard?'
+								'Are you sure you want to login to your Ethics Labs dashboard?'
 							),
 							actions: [
 								{

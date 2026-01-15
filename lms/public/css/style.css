@@ -5,7 +5,12 @@
 }
 
 body {
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: var(--text-base);
+}
+
+h1, h2, h3, h4, h5, h6, .display-text {
+	font-family: 'Jacquard 24', serif;
 }
 
 .nav-link .course-list-count {
@@ -1045,14 +1050,15 @@ pre {
 }
 
 .certificate-border {
-	border: 10px solid #0089FF;
+	border: 10px solid #0099ff;
 	/* border-image: url(/assets/lms/images/border.png);
 	border-width: 100;
 	border-style: solid ; */
 	border-radius: 8px;
 	padding: 6rem 4rem;
-	background-color: #FFFFFF;
+	background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
 	text-align: center;
+	box-shadow: 0 4px 20px rgba(0, 153, 255, 0.1);
 }
 
 .certificate-parent {
@@ -1068,9 +1074,10 @@ pre {
 
 .certificate-name {
 	font-size: 2rem;
-	font-weight: 500;
-	color: #192734;
+	font-weight: 600;
+	color: #000000;
 	margin-bottom: 0.25rem;
+	letter-spacing: -0.02em;
 }
 
 .certificate-footer {
@@ -1079,12 +1086,14 @@ pre {
 }
 
 .certificate-footer-item {
-	color: #192734;
+	color: #000000;
+	font-weight: 500;
 }
 
 .cursive-font {
 	font-family: cursive;
 	font-weight: 600;
+	color: #FF8C00;
 }
 
 .certificate-divider {
