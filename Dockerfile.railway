@@ -1,0 +1,20 @@
+# Railway Dockerfile for Ethics Labs LMS
+FROM frappe/bench:latest
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy init script
+COPY docker/init.sh /workspace/init.sh
+
+# Make script executable
+RUN chmod +x /workspace/init.sh
+
+# Set shell
+ENV SHELL=/bin/bash
+
+# Expose ports
+EXPOSE 8000 9000
+
+# Start command
+CMD ["bash", "/workspace/init.sh"]
