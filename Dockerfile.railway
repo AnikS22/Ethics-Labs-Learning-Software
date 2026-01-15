@@ -4,10 +4,7 @@ FROM frappe/bench:latest
 # Set working directory
 WORKDIR /workspace
 
-# Copy entire LMS directory
-COPY . /workspace/lms
-
-# Copy init script to workspace root
+# Copy init script
 COPY docker/init.sh /workspace/init.sh
 
 # Make script executable

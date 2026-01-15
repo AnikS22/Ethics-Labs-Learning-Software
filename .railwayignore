@@ -1,0 +1,54 @@
+# Railway Deployment - Ignore these files/folders
+
+# Development
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Testing
+cypress/
+.pytest_cache/
+*.log
+test.py
+
+# Documentation (keep deployment guides though)
+*.md
+!RAILWAY_*.md
+!README.md
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Local environment
+.env
+.env.local
+*.local
+
+# Frontend build artifacts (will be rebuilt)
+frontend/node_modules/
+frontend/dist/
+frontend/yarn-error.log
+
+# Branding source files (PNGs are large, already copied)
+EthicsLabBranding/
+
+# Random Desktop files
+../Desktop/
+../*.png
+../*.jpg
+../*.pdf
+../*.mov
