@@ -1,0 +1,20 @@
+# Nixpacks configuration for Railway
+# Railway uses Nixpacks for auto-detection
+
+[phases.setup]
+nixPkgs = ["python3", "python3Packages.pip", "nodejs", "yarn"]
+
+[phases.install]
+cmds = [
+  "pip install -r requirements.txt || true",
+  "pip install frappe-bench || true"
+]
+
+[phases.build]
+cmds = [
+  "cd apps/lms && yarn install || true",
+  "cd apps/lms && yarn build || true"
+]
+
+[start]
+cmd = "bench start"
