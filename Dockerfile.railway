@@ -1,20 +1,28 @@
 # Railway Dockerfile for Ethics Labs LMS
 FROM frappe/bench:latest
 
-# Set working directory
-WORKDIR /workspace
+# Switch to frappe user (the image expects this)
+USER frappe
 
-# Copy init script
-COPY docker/init.sh /workspace/init.sh
+# Set correct working directory (frappe/bench image uses /home/frappe)
+WORKDIR /home/frappe
 
-# Make script executable
-RUN chmod +x /workspace/init.sh
+# Copy the entire LMS repo
+COPY --chown=frappe:frappe . /home/frappe/lms-app
 
-# Set shell
+# Copy and prepare init script
+COPY --chown=frappe:frappe docker/init.sh /home/frappe/init.sh
+RUN chmod +x /home/frappe/init.sh
+
+# Fix shebang in init.sh if needed
+RUN sed -i '1s|^#!bin/bash|#!/bin/bash|' /home/frappe/init.sh
+
+# Set environment variables
 ENV SHELL=/bin/bash
+ENV PATH="/home/frappe/.local/bin:${PATH}"
 
 # Expose ports
 EXPOSE 8000 9000
 
 # Start command
-CMD ["bash", "/workspace/init.sh"]
+CMD ["/home/frappe/init.sh"]

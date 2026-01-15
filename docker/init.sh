@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 if [ -d "/home/frappe/frappe-bench/apps/frappe" ]; then
     echo "Bench already exists, skipping init"
@@ -29,11 +29,11 @@ bench set-redis-socketio-host redis://${REDIS_HOST}:${REDIS_PORT}
 sed -i '/redis/d' ./Procfile
 sed -i '/watch/d' ./Procfile
 
-bench get-app lms
+bench get-app lms /home/frappe/lms-app
 
 bench new-site lms.localhost \
 --force \
---mariadb-root-password 123 \
+--mariadb-root-password $MARIADB_PASSWORD \
 --admin-password admin \
 --no-mariadb-socket
 
