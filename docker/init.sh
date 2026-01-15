@@ -8,7 +8,22 @@ else
     echo "Creating new bench..."
 fi
 
-export PATH="${NVM_DIR}/versions/node/v${NODE_VERSION_DEVELOP}/bin/:${PATH}"
+# Check if node is already in PATH (frappe/bench image includes it)
+if ! command -v node &> /dev/null; then
+    # Node not found, try to use NVM if available
+    if [ -n "$NVM_DIR" ] && [ -n "$NODE_VERSION_DEVELOP" ]; then
+        export PATH="${NVM_DIR}/versions/node/v${NODE_VERSION_DEVELOP}/bin/:${PATH}"
+        echo "Using NVM Node.js version ${NODE_VERSION_DEVELOP}"
+    else
+        # Try common Node.js installation paths
+        if [ -d "/usr/local/bin" ]; then
+            export PATH="/usr/local/bin:${PATH}"
+        fi
+        echo "Warning: Node.js not found in PATH, attempting to use system Node.js"
+    fi
+else
+    echo "Node.js found: $(which node) ($(node --version))"
+fi
 
 bench init --skip-redis-config-generation frappe-bench
 
