@@ -14,11 +14,16 @@ bench init --skip-redis-config-generation frappe-bench
 
 cd frappe-bench
 
-# Use containers instead of localhost
-bench set-mariadb-host mariadb
-bench set-redis-cache-host redis://redis:6379
-bench set-redis-queue-host redis://redis:6379
-bench set-redis-socketio-host redis://redis:6379
+# Use environment variables from Railway (or default to local docker)
+MARIADB_HOST="${MYSQL_HOST:-mariadb}"
+REDIS_HOST="${REDIS_HOST:-redis}"
+REDIS_PORT="${REDIS_PORT:-6379}"
+MARIADB_PASSWORD="${MYSQL_ROOT_PASSWORD:-123}"
+
+bench set-mariadb-host $MARIADB_HOST
+bench set-redis-cache-host redis://${REDIS_HOST}:${REDIS_PORT}
+bench set-redis-queue-host redis://${REDIS_HOST}:${REDIS_PORT}
+bench set-redis-socketio-host redis://${REDIS_HOST}:${REDIS_PORT}
 
 # Remove redis, watch from Procfile
 sed -i '/redis/d' ./Procfile
@@ -28,7 +33,7 @@ bench get-app lms
 
 bench new-site lms.localhost \
 --force \
---mariadb-root-password 123 \
+--mariadb-root-password ${MARIADB_PASSWORD} \
 --admin-password admin \
 --no-mariadb-socket
 
