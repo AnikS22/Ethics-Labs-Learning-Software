@@ -9,7 +9,11 @@ WORKDIR /home/frappe
 
 # Ensure bench is installed and in PATH
 # frappe/bench image should have it, but let's verify and install if needed
-RUN pip3 install --user frappe-bench || true
+RUN pip3 install --user frappe-bench
+
+# Update PATH in the shell profile so it persists
+RUN echo 'export PATH="/home/frappe/.local/bin:${PATH}"' >> ~/.bashrc && \
+    echo 'export PATH="/home/frappe/.local/bin:${PATH}"' >> ~/.profile
 
 # Copy the entire LMS repo
 COPY --chown=frappe:frappe . /home/frappe/lms-app
@@ -22,14 +26,17 @@ RUN chmod +x /home/frappe/init.sh
 RUN sed -i '1s|^#!bin/bash|#!/bin/bash|' /home/frappe/init.sh
 
 # Set environment variables - include common bench locations in PATH
+# This must be set for Railway runtime
 ENV SHELL=/bin/bash
-ENV PATH="/home/frappe/.local/bin:/usr/local/bin:/usr/bin:${PATH}"
+ENV PATH="/home/frappe/.local/bin:/usr/local/bin:/usr/bin:/bin:${PATH}"
 
-# Verify bench is accessible (will fail build if not found)
-RUN which bench || pip3 install --user frappe-bench && which bench || echo "Warning: bench not found, will be installed in init script"
+# Verify bench is accessible (check multiple ways)
+RUN /home/frappe/.local/bin/bench --version || \
+    (export PATH="/home/frappe/.local/bin:${PATH}" && which bench && bench --version) || \
+    echo "Warning: Could not verify bench, will check in init script"
 
 # Expose ports
 EXPOSE 8000 9000
 
 # Start command
-CMD ["/home/frappe/init.sh"]
+CMD ["/bin/bash", "/home/frappe/init.sh"]
