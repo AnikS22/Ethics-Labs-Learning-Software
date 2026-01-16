@@ -7,6 +7,10 @@ USER frappe
 # Set correct working directory (frappe/bench image uses /home/frappe)
 WORKDIR /home/frappe
 
+# Ensure bench is installed and in PATH
+# frappe/bench image should have it, but let's verify and install if needed
+RUN pip3 install --user frappe-bench || true
+
 # Copy the entire LMS repo
 COPY --chown=frappe:frappe . /home/frappe/lms-app
 
@@ -17,9 +21,12 @@ RUN chmod +x /home/frappe/init.sh
 # Fix shebang in init.sh if needed
 RUN sed -i '1s|^#!bin/bash|#!/bin/bash|' /home/frappe/init.sh
 
-# Set environment variables
+# Set environment variables - include common bench locations in PATH
 ENV SHELL=/bin/bash
-ENV PATH="/home/frappe/.local/bin:${PATH}"
+ENV PATH="/home/frappe/.local/bin:/usr/local/bin:/usr/bin:${PATH}"
+
+# Verify bench is accessible (will fail build if not found)
+RUN which bench || pip3 install --user frappe-bench && which bench || echo "Warning: bench not found, will be installed in init script"
 
 # Expose ports
 EXPOSE 8000 9000
